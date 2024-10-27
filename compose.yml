@@ -1,0 +1,23 @@
+services:
+  control-node:
+    build: ./control-node
+    container_name: control-node
+    hostname: control-node
+    init: true
+    tty: true
+
+  target-node1:
+    build: ./target-node
+    container_name: target-node1
+    hostname: target-node1
+    depends_on:
+      - control-node
+    tty: true
+
+  target-node2:
+    build: ./target-node
+    container_name: target-node2
+    hostname: target-node2
+    depends_on:
+      - control-node
+    tty: true

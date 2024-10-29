@@ -1,3 +1,7 @@
 [target]
 target-node1
 target-node2
+
+[target:vars]
+ansible_user=ansibleuser
+ansible_ssh_private_key_file=/home/ansibleuser/.ssh/id_rsa

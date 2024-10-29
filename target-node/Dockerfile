@@ -16,8 +16,7 @@ RUN mkdir -p /home/ansibleuser/.ssh && \
     ssh-keygen -A
 
 # Permit PubkeyAuthentication and RootLogin
-RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config && \
-    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
 
 # Copy Public Key from control-node image
 COPY --from=ansible_dockerlab-control-node --chown=ansibleuser:ansibleuser /home/ansibleuser/.ssh/id_rsa.pub /home/ansibleuser/.ssh/authorized_keys

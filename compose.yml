@@ -1,3 +1,11 @@
+x-target: &target-params
+  build: ./target-node
+  depends_on:
+    - control-node
+  command: /sbin/init
+  privileged: true
+  tty: true
+
 services:
   control-node:
     build: ./control-node
@@ -7,21 +15,11 @@ services:
     tty: true
 
   target-node1:
-    build: ./target-node
+    <<: *target-params
     container_name: target-node1
     hostname: target-node1
-    depends_on:
-      - control-node
-    command: /sbin/init
-    privileged: true
-    tty: true
 
   target-node2:
-    build: ./target-node
+    <<: *target-params
     container_name: target-node2
     hostname: target-node2
-    depends_on:
-      - control-node
-    command: /sbin/init
-    privileged: true
-    tty: true

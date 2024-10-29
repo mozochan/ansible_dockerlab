@@ -12,6 +12,8 @@ services:
     hostname: target-node1
     depends_on:
       - control-node
+    command: /sbin/init
+    privileged: true
     tty: true
 
   target-node2:
@@ -20,4 +22,6 @@ services:
     hostname: target-node2
     depends_on:
       - control-node
+    command: /sbin/init
+    privileged: true
     tty: true

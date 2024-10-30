@@ -9,13 +9,13 @@ RUN dnf update -y && \
 RUN useradd -m -s /bin/bash ansibleuser && \
     echo "ansibleuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Create SSH Host Key
+# Create .ssh directory and SSH Host Key
 RUN mkdir -p /home/ansibleuser/.ssh && \
     chmod 700 /home/ansibleuser/.ssh && \
     chown ansibleuser:ansibleuser /home/ansibleuser/.ssh && \
     ssh-keygen -A
 
-# Permit PubkeyAuthentication and RootLogin
+# Permit PubkeyAuthentication
 RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
 
 # Copy Public Key from control-node image

@@ -5,7 +5,20 @@ This is a simple Ansible lab with docker compose on almalinux 9.4.
 ## Requirements
 
 - Install Docker and Docker Compose.
-- If you want to start the lab as a non-root user, create a Unix group called docker and add users to it.
+- If you want to start the lab (run docker compose command) as a non-root user, create a Unix group called docker and add users to it.
+- If make is not installed, install it with the following command.
+
+  - Ubuntu/Debian:
+
+  ```bash
+  sudo apt update && sudo apt install make
+  ```
+
+  - RHEL:
+
+  ```bash
+  sudo dnf install make
+  ```
 
 ## Usage
 
